@@ -1,0 +1,44 @@
+﻿<h1>Liste des Comptes</h1>
+<a routerLink="add" class="btn btn-success text-white mb-2">Ajouter compte</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 10%">Id Compte</th>
+            <th style="width: 20%">Id # Cin Client</th>
+            <th style="width: 20%">Username</th>
+            <th style="width: 30%">Type de compte</th>
+            <th style="width: 20%">Solde</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let obj of comptes">
+            <td>{{obj._id}} </td>
+            <ng-template [ngIf]="obj.client!=null" [ngIfElse]="nullClient">
+                <td>{{obj.client._id}}#{{obj.client.cin}}</td>
+              </ng-template>
+              
+              <ng-template #nullClient>
+                <td style="color:red">Client Deleted</td>
+              </ng-template>
+             
+            <td>{{obj.username}}</td>
+            <td>{{obj.typeCompte.libelle}}</td>
+            <td>{{obj.solde}} DT</td>
+            <td style="white-space: nowrap; ">
+                <ng-template [ngIf]="obj.client!=null">
+                    <a routerLink="edit/{{obj._id}}"   class="btn btn-primary text-white me-1">Editer</a>
+                  </ng-template>
+                <button (click)="deleteCompte(obj._id)" class="btn btn-danger text-white" [disabled]="obj.isDeleting">
+                    <span *ngIf="obj.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!obj.isDeleting">Delete</span>
+                </button>
+            </td> 
+        </tr>
+        <tr *ngIf="!comptes">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+﻿<h1>Liste des Clients</h1>
+<a routerLink="add" class="btn btn-success text-white mb-2">Ajouter client</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 5%">Id</th>
+            <th style="width: 10%">Cin</th>
+            <th style="width: 10%">Nom</th>
+            <th style="width: 10%">Prenom</th>
+            <th style="width: 15%">Date de naissance</th>
+            <th style="width: 20%">Email</th>
+            <th style="width: 25%">Adresse</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let obj of clients">
+            <td>{{obj._id}} </td>
+            <td>{{obj.cin}}</td>
+            <td>{{obj.nom}}</td>
+            <td>{{obj.prenom}}</td>
+            <td>{{obj.dateNaissance}}</td>
+            <td>{{obj.email}}</td>
+            <td>{{obj.rue}} {{obj.ville}} , {{obj.region}} , {{obj.codePostal}}</td>
+            <td style="white-space: nowrap"> 
+                <a routerLink="edit/{{obj._id}}"   class="btn btn-primary text-white me-1">Editer</a>
+                <button (click)="deleteClient(obj._id)" class="btn btn-danger text-white" [disabled]="obj.isDeleting">
+                    <span *ngIf="obj.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!obj.isDeleting">Delete</span>
+                </button>
+            </td> 
+        </tr>
+        <tr *ngIf="!clients">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
