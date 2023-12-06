@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <h2>Send Money</h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="moneyTransferForm">
+      <h1 style="text-align: center;">SOLDE:</h1>
+      
+      <div class="amount-circle">
+            
+            <span>{{ compteDetails?.solde }} DT</span>
+          </div>
+      <div class="mb-3">
+        <label for="toUsername" class="form-label">Recipient Username</label>
+        <input type="text" class="form-control" id="toUsername" formControlName="toUsername" required>
+        <div *ngIf="f.toUsername.errors?.required" class="text-danger">
+          Recipient Username is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="amount" class="form-label">Amount</label>
+        <input type="number" class="form-control" id="amount" formControlName="amount" required>
+        <div *ngIf="f.amount.errors?.required" class="text-danger">
+          Amount is required.
+        </div>
+        <div *ngIf="f.amount.errors?.min" class="text-danger">
+          Amount must be greater than 0.
+        </div>
+        <div *ngIf="f.amount.value > compteDetails?.solde" class="text-danger">
+          Insufficient funds.
+        </div>
+      </div>
+      <button type="submit" [disabled]="moneyTransferForm.invalid" class="btn btn-primary">Send Money</button>
+    </form>
+  </div>
+  

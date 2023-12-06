@@ -1,0 +1,20 @@
+<div class="container mt-5">
+    <h2>Compte Details</h2>
+    <div *ngIf="client" class="card mt-4">
+      <div class="card-body">
+        <h5 class="card-title">Username: {{ client.username }}</h5>
+        <p class="card-text">Client ID: {{ client.client._id }}</p>
+        <p class="card-text">Nom: {{ client.client.nom }}</p>
+        <p class="card-text">Prénom: {{ client.client.prenom }}</p>
+        <p class="card-text">CIN: {{ client.client.cin }}</p>
+        <p class="card-text">Solde: {{ client.solde }} DT</p>
+        
+        <p class="card-text">Type Compte: {{ client.typeCompte.libelle }}</p>
+        <!-- Add more details as needed -->
+      </div>
+    </div>
+    <div *ngIf="!client" class="alert alert-warning mt-4">
+      Loading compte details...
+    </div>
+  </div>
+  

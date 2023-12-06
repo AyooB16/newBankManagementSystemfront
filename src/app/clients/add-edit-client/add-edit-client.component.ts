@@ -69,7 +69,7 @@ export class AddEditClientComponent implements OnInit {
               },
               
           error => {
-            this.router.navigate(['/clients']);
+            this.router.navigate(['/dashboard/clients']);
           }
               );
       }
@@ -93,7 +93,7 @@ export class AddEditClientComponent implements OnInit {
           .subscribe({
               next: () => {
                   this.alertService.success('Client saved', { keepAfterRouteChange: true });
-                  this.router.navigateByUrl('/clients');
+                  this.router.navigateByUrl('/dashboard/clients');
               },
               error: error => {
                   this.alertService.error("Cin ou email du client deja utilisé");

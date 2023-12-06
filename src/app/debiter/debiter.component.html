@@ -1,0 +1,25 @@
+<h1>Debiter Compte</h1>
+
+<div class="mb-3">
+  <p><strong>Solde:</strong> {{ solde }} DT</p>
+</div>
+
+<form [formGroup]="debiterForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="montant">Montant</label>
+    <input type="number" formControlName="montant" class="form-control" [ngClass]="{ 'is-invalid': submitted && (f.montant.errors || f.montant.hasError('exceedsSolde')) }" />
+    <div *ngIf="submitted && (f.montant.errors || f.montant.hasError('exceedsSolde'))" class="invalid-feedback">
+      <div *ngIf="f.montant.errors?.required">Montant is required</div>
+      <div *ngIf="f.montant.errors?.min">Montant must be >= 0.01</div>
+      <div *ngIf="f.montant.hasError('exceedsSolde')">Montant exceeds available solde</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button [disabled]="loading || f.montant.hasError('exceedsSolde')" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+      Debiter
+    </button>
+    <a routerLink="/dashboard/comptes" class="btn btn-link">Cancel</a>
+  </div>
+</form>

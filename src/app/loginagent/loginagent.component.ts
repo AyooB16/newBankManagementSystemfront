@@ -25,18 +25,13 @@ export class LoginagentComponent implements OnInit {
     ); 
   }
   onSubmit() {
-
-    
     this.agentLoginService.login(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value).subscribe(
       (response) => {
-        // Handle successful login response - save token to local storage
-        localStorage.setItem('token', response.token); // Assuming token is received in the response
-        this.router.navigate(['/dashboard']); // Navigate to a dashboard or another route on successful login
+        localStorage.setItem('token', response.token); 
+        this.router.navigate(['/dashboard']);
       },
       (error) => {
-        // Handle login error
         console.log('Login failed', error);
-        // Display error message to the user
       }
     );
     

@@ -25,9 +25,11 @@
             <td>{{obj.username}}</td>
             <td>{{obj.typeCompte.libelle}}</td>
             <td>{{obj.solde}} DT</td>
-            <td style="white-space: nowrap; ">
+            <td style=" ">
                 <ng-template [ngIf]="obj.client!=null">
-                    <a routerLink="edit/{{obj._id}}"   class="btn btn-primary text-white me-1">Editer</a>
+                    <a routerLink="crediter/{{obj._id}}"   class="btn btn-success text-white me-1 mb-3">(+)Crediter</a>
+                    <a routerLink="debiter/{{obj._id}}"   class="btn btn-warning text-white me-1 mb-3">(-)Debiter</a>
+                    <a routerLink="edit/{{obj._id}}"   class="btn btn-primary text-white me-1 mb-3">Editer</a>
                   </ng-template>
                 <button (click)="deleteCompte(obj._id)" class="btn btn-danger text-white" [disabled]="obj.isDeleting">
                     <span *ngIf="obj.isDeleting" class="spinner-border spinner-border-sm"></span>

@@ -65,7 +65,7 @@ export class AddEditCompteComponent implements OnInit {
                 
               },
               error => {
-                this.router.navigate(['/comptes']);
+                this.router.navigate(['/dashboard/comptes']);
               }
               );
       }
@@ -89,7 +89,7 @@ export class AddEditCompteComponent implements OnInit {
           .subscribe({
               next: () => {
                   this.alertService.success('Compte saved', { keepAfterRouteChange: true });
-                  this.router.navigateByUrl('/comptes');
+                  this.router.navigateByUrl('/dashboard/comptes');
               },
               error: error => {
                   this.alertService.error("Username deja utilisé");

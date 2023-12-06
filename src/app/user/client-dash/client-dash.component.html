@@ -1,11 +1,11 @@
 
-    
 
 <div class="container-fluid position-relative">
     <header class="topbar" data-navbarbg="skin6">
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="navbar-header" data-logobg="skin6">
-                <b class="navbar-brand">Système de gestion bancaire</b>
+                <!-- <b class="navbar-brand">Système de gestion bancaire</b> -->
+                <img src="assets/flouci.png"/>
             </div>
         </nav>
     </header>
@@ -16,7 +16,7 @@
                 <ul id="sidebarnav">
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark nav-item nav-link text-dark" 
-                            routerLink="/dashboard"  
+                            routerLink="./" 
                             [routerLinkActive]="['active']" 
                             [routerLinkActiveOptions]="{ exact: true }">
                             <i class="mdi mdi-view-dashboard text-dark"></i><span class="hide-menu">Home</span>
@@ -25,18 +25,18 @@
                     <!-- Other Routes -->
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark nav-item nav-link text-dark" 
-                            routerLink="clients" 
+                            routerLink="details" 
                             [routerLinkActive]="['active']" 
                             [routerLinkActiveOptions]="{ exact: true }">
-                            <i class="mdi mdi-face-man text-dark"></i><span class="hide-menu">Clients</span>
+                            <i class="mdi mdi-face-man text-dark"></i><span class="hide-menu">Mes details</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark nav-item nav-link text-dark" 
-                            routerLink="comptes" 
+                            routerLink="send" 
                             [routerLinkActive]="['active']" 
                             [routerLinkActiveOptions]="{ exact: true }">
-                            <i class="mdi mdi-cash text-dark"></i><span class="hide-menu">Comptes</span>
+                            <i class="mdi mdi-cash text-dark"></i><span class="hide-menu">Envoyer de l'argent</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
